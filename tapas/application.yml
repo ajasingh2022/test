@@ -1,0 +1,99 @@
+server:
+  servlet:
+    context-path: /sesp/services/wotransactionservice
+
+spring:
+  application:
+    name: wotransactionservice
+  data:
+    rest:
+      max-page-size: 500
+      default-page-size: 50
+   
+  profiles:
+    active: "dev"
+  cronForFileToMessageScanner : '0 */5 * * * *'
+  cronForMessageScanner : '0 */5 * * * *'
+
+---
+
+spring:
+  profiles: dev
+  
+  datasource:
+    url: jdbc:sqlserver://localhost:1433;databaseName=std1da5dev
+    username: sa
+    password: Dec@2018
+    driver-class-name: com.microsoft.sqlserver.jdbc.SQLServerDriver
+  
+server:
+    port: 8971
+    
+eureka:
+  client:
+    register-with-eureka: true    # REGISTER THIS WITH EUREKA
+    fetch-registry: true          # CACHING FOR THIS  
+   
+api:
+ version: 1.0
+ 
+ 
+swagger:
+  enabled: true
+  title: Wo-Transaction-Service
+  description: All modules of transactionserver are described here.
+  license: https://www.capgemini.com/service/next-gen-esp/  
+  
+---
+
+spring:
+  profiles: oracleDevBox
+  
+server:
+    port: 8971
+    
+eureka:
+  client:
+    register-with-eureka: true    # REGISTER THIS WITH EUREKA
+    fetch-registry: true          # CACHING FOR THIS  
+   
+api:
+ version: 1.0
+  
+---
+
+spring:
+  profiles: production
+  
+server:
+    port: 8971
+
+eureka:
+  client:
+    register-with-eureka: true    # REGISTER THIS WITH EUREKA
+    fetch-registry: true          # CACHING FOR THIS  
+   
+api:
+ version: 1.0
+  
+---
+
+spring:
+  profiles: devBox
+  
+server:
+    port: 8971
+    
+eureka:
+  client:
+    register-with-eureka: true    # REGISTER THIS WITH EUREKA
+    fetch-registry: true          # CACHING FOR THIS  
+   
+api:
+ version: 1.0
+ 
+swagger:
+  enabled: true
+  title: Wo-Transaction-Service
+  description: All modules of transactionserver are described here.
+  license: https://www.capgemini.com/service/next-gen-esp/ 
